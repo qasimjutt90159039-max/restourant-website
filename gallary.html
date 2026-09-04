@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - The Carnivore</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[#0B1315] overflow-x-hidden">
+
+    <!-- NAVBAR (Fixed Top) -->
+    <div class="fixed top-0 left-0 z-50 w-full h-[95px] bg-[#000000] flex justify-between lg:justify-around items-center px-4 lg:px-0 border-b border-[#c9ab81]">
+        <!-- logo -->
+        <div class="w-auto lg:w-[20%] h-[93px] flex justify-center items-center">
+            <img class="w-[120px] md:w-[150px] h-[80px] md:h-[92px] object-contain" src="photo/imageye___-_imgi_98_photo (1).jpg" alt="Logo">
+        </div>
+        
+        <!-- desktop links -->
+        <div class="hidden lg:flex w-[45%] h-[93px] justify-evenly items-center">
+                <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="index.html">Home</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="our-mrnu.html">Our Menu</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="about-sectiom.html">About Carnivore</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="gallary.html">Gallary</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="blog.html">Blog</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="contact.html">Contact</a>
+        </div>
+
+        <!-- right buttons & toggles -->
+        <div class="w-auto lg:w-[25%] h-[93px] flex justify-end lg:justify-evenly items-center gap-3 lg:gap-0">
+            <button class="w-[130px] sm:w-[160px] h-[38px] sm:h-[42px] border bg-white font-josefin text-[13px] sm:text-[15px] font-light text-[#585858] rounded-[8px] relative overflow-hidden group">
+                <span class="absolute inset-y-0 left-0 w-0 bg-[#C9AB81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Book Your Table</span>
+            </button>
+            
+            <!-- Menu Icon (Location Drawer) -->
+            <i id="menuIcon" class="fa-solid fa-bars-staggered text-[#C9AB81] text-[24px] sm:text-[30px] lg:mr-[30px] cursor-pointer"></i>
+
+            <!-- Mobile Nav Toggle -->
+            <button id="mobileNavToggle" class="lg:hidden text-[#C9AB81] text-[24px] focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION MENU OVERLAY -->
+    <div id="mobileNavMenu" class="fixed inset-0 bg-[#000000]/95 z-[90] flex flex-col justify-center items-center gap-6 text-center transform -translate-y-full transition-transform duration-300 ease-in-out lg:hidden">
+        <button id="closeMobileNav" class="absolute top-8 right-8 text-[#c9ab81] text-3xl focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+          <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="index.html">Home</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="our-mrnu.html">Our Menu</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="about-sectiom.html">About Carnivore</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="gallary.html">Gallary</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="blog.html">Blog</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="contact.html">Contact</a>
+    </div>
+
+    <!-- LOCATION OVERLAY MENU -->
+    <div id="locationMenu" class="fixed top-0 right-0 w-full sm:w-3/4 md:w-1/2 h-full bg-[#0e1a1d] z-[100] translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto border-l border-[#c9ab81]">
+        <div class="absolute top-8 right-8 text-white text-3xl cursor-pointer hover:text-[#c9ab81]" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <div class="flex flex-col items-center py-16 px-6 sm:px-10 text-center font-josefin">
+            <div class="mb-12">
+                <h1 class="text-white text-2xl sm:text-3xl font-bold tracking-[0.2em] leading-tight">THE CARNIVORE</h1>
+                <p class="text-white text-[9px] tracking-[0.4em] mt-1">BAKED MEAT RESTAURANT</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">ISLAMABAD</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">LAHORE</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">KARACHI</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">RIYADH</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO HEADER SECTION -->
+    <div class="w-full h-[320px] sm:h-[420px] lg:h-[520px] bg-[#0B1315] flex justify-center items-center mt-[95px]">
+        <div class="w-[90%] sm:w-[60%] lg:w-[40%] h-auto min-h-[180px] sm:h-[200px] flex flex-col justify-end">
+            <div class="w-full h-auto flex justify-between items-center gap-2">
+                <img class="w-[35px] sm:w-[60px] h-[15px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                <p class="font-['caviar_dreamsbold'] text-[32px] sm:text-[40px] lg:text-[48px] font-bold leading-tight text-[#c9ab81] text-center">
+                    GALLERY
+                </p>
+                <img class="w-[35px] sm:w-[60px] h-[15px] rotate-180" src="photo/download (1).svg" alt="decoration">
+            </div>
+
+            <!-- Breadcrumbs -->
+            <div class="w-full sm:w-[500px] h-[50px] mx-auto flex justify-center items-center gap-2 mt-4">
+                <p class="font-['Josefin_Sans'] text-[16px] sm:text-[19px] font-light leading-[29px] text-[#c9ab81]">Home</p>
+                <i class="fa-solid fa-angle-right text-[15px] sm:text-[17px] text-white"></i>
+                <p class="font-['Josefin_Sans'] text-[16px] sm:text-[19px] font-light leading-[29px] text-white">Gallary Page</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY IMAGES GRID SECTION -->
+    <div class="w-full h-auto bg-[#0B1315] flex flex-col items-center py-6 lg:py-12">
+        <div class="w-[90%] lg:w-[78%] h-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- Item 1 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_102_1-1024x1024.webp" alt="Gallery Image 1">
+            </div>
+            <!-- Item 2 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_109_8-1024x1024.webp" alt="Gallery Image 2">
+            </div>
+            <!-- Item 3 -->
+            <div class="w-full h-[280px] sm:h-[310px] border border-gray-800 overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_113_9-1024x1024.webp" alt="Gallery Image 3">
+            </div>
+
+            <!-- Item 4 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_19_9.webp" alt="Gallery Image 4">
+            </div>
+            <!-- Item 5 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_20_5.webp" alt="Gallery Image 5">
+            </div>
+            <!-- Item 6 -->
+            <div class="w-full h-[280px] sm:h-[310px] border border-gray-800 overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_21_4.webp" alt="Gallery Image 6">
+            </div>
+
+            <!-- Item 7 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_22_3.webp" alt="Gallery Image 7">
+            </div>
+            <!-- Item 8 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_23_2-1.webp" alt="Gallery Image 8">
+            </div>
+            <!-- Item 9 -->
+            <div class="w-full h-[280px] sm:h-[310px] border border-gray-800 overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_24_3-1.webp" alt="Gallery Image 9">
+            </div>
+
+            <!-- Item 10 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_94_3-1024x1024.webp" alt="Gallery Image 10">
+            </div>
+            <!-- Item 11 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_98_2-1024x1024.webp" alt="Gallery Image 11">
+            </div>
+            <!-- Item 12 -->
+            <div class="w-full h-[280px] sm:h-[310px] border border-gray-800 overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_66_6-1-1024x1024.webp" alt="Gallery Image 12">
+            </div>
+
+            <!-- Item 13 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_74_9-1-1024x1024.webp" alt="Gallery Image 13">
+            </div>
+            <!-- Item 14 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_86_4-1024x1024.webp" alt="Gallery Image 14">
+            </div>
+            <!-- Item 15 -->
+            <div class="w-full h-[280px] sm:h-[310px] border border-gray-800 overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_78_5-1-1024x1024.webp" alt="Gallery Image 15">
+            </div>
+
+            <!-- Item 16 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_70_7-1-1024x1024.webp" alt="Gallery Image 16">
+            </div>
+            <!-- Item 17 -->
+            <div class="w-full h-[280px] sm:h-[310px] overflow-hidden">
+                <img class="w-full h-full object-cover" src="gallary-photo/imageye___-_imgi_20_5.webp" alt="Gallery Image 17">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bg-[#0d1112] w-full h-auto">
+        <div class="w-full h-auto lg:h-[600px] flex justify-center bg-[#0d1112]">
+            <div class="w-[90%] lg:w-[88%] h-auto lg:h-[500px] mt-8 mx-auto bg-[#0a1113] flex flex-col md:flex-row flex-wrap lg:flex-nowrap font-['Josefin_Sans']">
+
+                <!-- Column 1 -->
+                <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col items-center justify-center p-6 lg:px-10 text-center border-b md:border-b-0 md:border-r border-gray-800">
+                    <div class="mb-6">
+                        <img src="photo/imageye___-_imgi_98_photo (1).jpg" class="w-36 sm:w-40 invert brightness-200" alt="Logo">
+                    </div>
+                    <p class="text-white text-[15px] sm:text-[17px] leading-relaxed sm:leading-7 font-light">
+                        The Carnivore was created to celebrate premium baked meats, refined dining, and warm hospitality, delivering consistent flavors and memorable experiences proudly as the best restaurant in Pakistan!
+                    </p>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="w-full md:w-1/2 lg:w-[18%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-12 border-b md:border-b-0 lg:border-r border-gray-800">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Links</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    <div class="flex flex-col gap-3 sm:gap-4 text-[#c9ab81]/80 text-[15px] sm:text-[16px] font-light italic">
+                        <a href="#" class="hover:text-white transition-colors">Home</a>
+                        <a href="#" class="hover:text-white transition-colors">About Carnivore</a>
+                        <a href="#" class="hover:text-white transition-colors">Our Menu</a>
+                        <a href="#" class="hover:text-white transition-colors">Offers & Discounts</a>
+                        <a href="#" class="hover:text-white transition-colors">Blog</a>
+                        <a href="#" class="hover:text-white transition-colors">Contact Us</a>
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10 border-b md:border-b-0 md:border-r border-gray-800">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Contact Us</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    <div class="flex flex-col gap-4 sm:gap-6 text-[#c9ab81] text-[13px] sm:text-[14px]">
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Islamabad</h4>
+                            <p class="font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Lahore</h4>
+                            <p class="font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Karachi</h4>
+                            <p class="font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Riyadh</h4>
+                            <p class="font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="w-full md:w-1/2 lg:w-[26%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Follow Instagram</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    
+                    <div class="grid grid-cols-3 gap-2 mb-6 sm:mb-8">
+                        <img src="https://picsum.photos/80/80?random=1" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=2" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=3" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=4" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=5" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=6" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 sm:gap-3">
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-facebook-f text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-instagram text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-youtube text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-snapchat text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-x-twitter text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-tiktok text-xs sm:text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LAST FOOTER COPYRIGHT -->
+        <div class="w-full h-auto min-h-[80px] flex justify-center py-4 sm:py-0">
+            <div class="w-[90%] lg:w-[50%] h-auto min-h-[80px] mx-auto flex justify-center items-center bg-[#0a1113] border-t border-gray-800 text-center px-4">
+                <p class="font-['Josefin_Sans'] text-[14px] sm:text-[18px] font-light tracking-[1px] text-white">
+                    Copyright © 2026 All Rights Reserved - - 
+                    <span class="text-[#c9ab81] ml-1 block sm:inline mt-1 sm:mt-0">Bright Ideas Communications</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Location Drawer Menu Controls
+        const menuIcon = document.getElementById('menuIcon');
+        const closeMenu = document.getElementById('closeMenu');
+        const locationMenu = document.getElementById('locationMenu');
+
+        menuIcon.addEventListener('click', () => {
+            locationMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        closeMenu.addEventListener('click', () => {
+            locationMenu.classList.add('translate-x-full');
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mobile Nav Menu Controls
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('-translate-y-full');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const hideMobileMenu = () => {
+            mobileNavMenu.classList.add('-translate-y-full');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeMobileNav.addEventListener('click', hideMobileMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', hideMobileMenu));
+    </script>
+</body>
+</html>

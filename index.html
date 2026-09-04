@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Carnivore</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c9ab81; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-[#0B1315] overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <div class="fixed top-0 left-0 z-50 w-full h-[95px] bg-[#000000] flex justify-between lg:justify-around items-center px-4 lg:px-0 border-b border-[#c9ab81]">
+        <!-- logo -->
+        <div class="w-auto lg:w-[20%] h-[93px] flex justify-center items-center">
+            <img class="w-[120px] md:w-[150px] h-[80px] md:h-[92px] object-contain" src="photo/imageye___-_imgi_98_photo (1).jpg" alt="Logo">
+        </div>
+        
+        <!-- desktop links -->
+        <div class="hidden lg:flex w-[45%] h-[93px] justify-evenly items-center">
+               <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="index.html">Home</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="our-mrnu.html">Our Menu</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="about-sectiom.html">About Carnivore</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="gallary.html">Gallary</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="blog.html">Blog</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="contact.html">Contact</a>
+        </div>
+
+        <!-- right controls -->
+        <div class="w-auto lg:w-[25%] h-[93px] flex justify-end lg:justify-evenly items-center gap-4 lg:gap-0">
+            <button class="w-[130px] sm:w-[160px] h-[38px] sm:h-[42px] border bg-white font-josefin text-[13px] sm:text-[15px] font-light text-[#585858] rounded-[8px] relative overflow-hidden group">
+                <span class="absolute inset-y-0 left-0 w-0 bg-[#C9AB81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Book Your Table</span>
+            </button>
+
+            <!-- Location Drawer Menu Trigger -->
+            <i id="menuIcon" class="fa-solid fa-bars-staggered text-[#C9AB81] text-[24px] sm:text-[30px] lg:mr-[30px] cursor-pointer"></i>
+
+            <!-- Mobile Nav Toggle (Hamburger for Menu Links) -->
+            <button id="mobileNavToggle" class="lg:hidden text-[#C9AB81] text-[24px] focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION OVERLAY (For Nav Links on Mobile/Tablet) -->
+    <div id="mobileNavMenu" class="fixed inset-0 bg-[#000000]/95 z-[90] flex flex-col justify-center items-center gap-6 text-center transform -translate-y-full transition-transform duration-300 ease-in-out lg:hidden">
+        <button id="closeMobileNav" class="absolute top-8 right-8 text-[#c9ab81] text-3xl focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="index.html">Home</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="our-mrnu.html">Our Menu</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="about-sectiom.html">About Carnivore</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="gallary.html">Gallary</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="blog.html">Blog</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="contact.html">Contact</a>
+    </div>
+
+    <!-- LOCATION OVERLAY MENU -->
+    <div id="locationMenu" class="fixed top-0 right-0 w-full sm:w-3/4 md:w-1/2 h-full bg-[#0e1a1d] z-[100] translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto border-l border-[#c9ab81]">
+        <div class="absolute top-8 right-8 text-white text-3xl cursor-pointer hover:text-[#c9ab81]" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <div class="flex flex-col items-center py-16 px-6 sm:px-10 text-center font-josefin">
+            <div class="mb-12">
+                <h1 class="text-white text-2xl sm:text-3xl font-bold tracking-[0.2em] leading-tight">THE CARNIVORE</h1>
+                <p class="text-white text-[9px] tracking-[0.4em] mt-1">BAKED MEAT RESTAURANT</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">ISLAMABAD</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">LAHORE</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">KARACHI</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">RIYADH</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO CONTAINER -->
+    <div class="relative w-full h-[400px] sm:h-[500px] lg:h-[650px] mt-[95px] overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="photo/Best Restaurant in Islamabad F6 The Carnivore (1).mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- OUR STORY CONTAINER -->
+    <div class="w-full h-auto lg:h-[350px] flex justify-center bg-[#0B1315] items-center py-10 lg:py-0">
+        <div class="w-[90%] lg:w-[50%] h-auto lg:h-[250px] flex flex-col justify-center">
+            <p class="font-['Miniver'] text-[19px] font-normal leading-[28px] text-[#c9ab81] text-center">Our Story</p>
+
+            <div class="w-full sm:w-[85%] lg:w-[75%] h-auto my-3 mx-auto flex justify-between items-center gap-2">
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+                <p class="font-['caviar_dreamsbold'] text-[28px] sm:text-[38px] lg:text-[48px] font-bold leading-tight text-[#c9ab81] uppercase tracking-[4px] sm:tracking-[8px] lg:tracking-[10.56px] text-center">ABOUT US</p>
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+            </div>
+
+            <p class="font-['Josefin_Sans'] text-[15px] sm:text-[17px] lg:text-[19px] font-light leading-relaxed sm:leading-[29px] text-white text-center w-full sm:w-[90%] lg:w-[70%] mx-auto">At The Carnivore, our story is built on a passion for premium baked meats, refined dining, and creating memorable experiences through quality ingredients, warm hospitality, and consistent flavors.</p>
+        </div>
+    </div>
+
+    <!-- IMG CONTAINER 1 -->
+    <div class="w-full h-auto lg:h-[480px] flex justify-center items-center bg-[#0B1315] py-6 lg:py-0">
+        <div class="w-[90%] lg:w-[77%] h-auto lg:h-[360px] flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
+            <img class="w-full md:w-[31%] max-h-[360px] object-cover" src="photo/imageye___-_imgi_41_Beef-shank-Home-Image-top-267x300.webp" alt="">
+            <img class="w-full  md:w-[25%] max-h-[360px] object-cover" src="photo/42.webp" alt="">
+            <img class="w-full md:w-[31%] max-h-[360px] object-cover" src="photo/imageye___-_imgi_43_Beef-Ribs-Home-Image-top-267x300.webp" alt="">
+        </div>
+    </div>
+
+    <!-- RECOMMENDATION CONTAINER -->
+    <div class="w-full h-auto lg:h-[270px] flex justify-center items-center bg-[#0B1315] py-8 lg:py-0">
+        <div class="w-[90%] lg:w-[50%] h-auto lg:h-[200px] flex flex-col justify-center">
+            <p class="font-['Miniver'] text-[19px] font-normal leading-[28px] text-[#c9ab81] text-center">Recommendations</p>
+            <div class="w-full sm:w-[80%] mx-auto flex justify-between items-center gap-2 mt-2">
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+                <p class="font-['caviar_dreamsbold'] text-[30px] sm:text-[38px] lg:text-[44px] font-bold leading-tight text-[#c9ab81] text-center">Our Premium <br> Cuts</p>
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- IMG CONTAINER 2 -->
+    <div class="w-full h-auto lg:h-[480px] flex justify-center items-center bg-[#0B1315] py-6 lg:py-0">
+        <div class="w-[90%] lg:w-[77%] h-auto lg:h-[360px] flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-0">
+            <img class="w-full md:w-[31%] max-h-[360px] object-cover" src="photo/imageye___-_imgi_44_Beef-Round-cut-Premium-Home-Image-top-267x300.webp" alt="">
+            <div class="w-full md:w-[25%] h-auto lg:h-full flex items-center justify-center">
+                <p class="font-['Josefin_Sans'] text-[15px] sm:text-[17px] lg:text-[19px] font-light leading-relaxed lg:leading-[29px] text-white w-full lg:w-[80%] text-center">Elevate your palate with our finest selection of slow-baked lamb and beef. Each cut is tender, richly seasoned, and served with our signature sides and sauces — a curated experience for those who crave refined indulgence.</p>
+            </div>
+            <img class="w-full md:w-[31%] max-h-[360px] object-cover" src="photo/imageye___-_imgi_45_Lamb-Back-bone-cut-Premium-Home-Image-top-267x300.webp" alt="">
+        </div>
+    </div>
+
+    <!-- OUR MENU CONTAINER -->
+    <div class="w-full h-auto lg:h-[270px] flex justify-center items-center bg-[#0B1315] py-8 lg:py-0">
+        <div class="w-[90%] lg:w-[50%] h-auto lg:h-[200px] flex flex-col justify-center">
+            <p class="font-['Miniver'] text-[19px] font-normal leading-[28px] text-[#c9ab81] text-center">Carnivore Tasty Offer</p>
+            <div class="w-full sm:w-[80%] lg:w-[60%] mx-auto flex justify-between items-center gap-2 mt-3 sm:mt-5">
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+                <p class="font-['caviar_dreamsbold'] text-[28px] sm:text-[36px] lg:text-[41px] font-bold leading-tight text-[#c9ab81] text-center">OUR MENU</p>
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU CARDS CONTAINER -->
+    <div class="w-full h-auto lg:h-[600px] flex justify-center items-center bg-[#0B1315] py-8 lg:py-0">
+        <div class="w-[90%] lg:w-[88%] h-auto lg:h-[600px] flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-0">
+            <!-- card 1 -->
+            <div class="w-full md:w-[31%] h-auto lg:h-[550px] flex flex-col items-center">
+                <img class="w-full h-[300px] sm:h-[350px] lg:h-[400px] object-cover" src="photo/imageye___-_imgi_46_Lamb-Neck-Home-Menu-267x300.webp" alt="">
+                <p class="font-sans text-[17px] font-bold leading-[15px] text-[#c9ab81] text-center mt-5 sm:mt-7">LAMB NECK</p>
+                <button class="w-[180px] h-[46px] border bg-transparent font-josefin text-[15px] font-light text-[#888888] rounded-[8px] relative overflow-hidden group mt-5 lg:mt-6">
+                    <span class="absolute inset-y-0 left-0 w-0 bg-[#c9ab81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                    <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Read More</span>
+                </button>
+            </div>
+
+            <!-- card 2 -->
+            <div class="w-full md:w-[31%] h-auto lg:h-[550px] flex flex-col items-center">
+                <img class="w-full h-[300px] sm:h-[350px] lg:h-[400px] object-cover" src="photo/imageye___-_imgi_47_Beef-Brisket-Home-Menu-267x300.webp" alt="">
+                <p class="font-sans text-[17px] font-bold leading-[15px] text-[#c9ab81] text-center mt-5 sm:mt-7">BEEF BRISKET</p>
+                <button class="w-[180px] h-[46px] border bg-transparent font-josefin text-[15px] font-light text-[#888888] rounded-[8px] relative overflow-hidden group mt-5 lg:mt-6">
+                    <span class="absolute inset-y-0 left-0 w-0 bg-[#c9ab81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                    <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Read More</span>
+                </button>
+            </div>
+
+            <!-- card 3 -->
+            <div class="w-full md:w-[31%] h-auto lg:h-[550px] flex flex-col items-center">
+                <img class="w-full h-[300px] sm:h-[350px] lg:h-[400px] object-cover" src="photo/imageye___-_imgi_48_Beef-Ribs-Home-Menu-267x300.webp" alt="">
+                <p class="font-sans text-[17px] font-bold leading-[15px] text-[#c9ab81] text-center mt-5 sm:mt-7">BEEF RIBS</p>
+                <button class="w-[180px] h-[46px] border bg-transparent font-josefin text-[15px] font-light text-[#888888] rounded-[8px] relative overflow-hidden group mt-5 lg:mt-6">
+                    <span class="absolute inset-y-0 left-0 w-0 bg-[#c9ab81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                    <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Read More</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADING SECTION -->
+    <div class="w-full h-auto flex justify-center bg-[#0B1315] py-8 lg:py-10">
+        <div class="w-[90%] lg:w-[88%] h-auto">
+            <p class="font-['Josefin_Sans'] text-[15px] sm:text-[17px] lg:text-[19px] font-normal leading-relaxed lg:leading-[29px] text-white text-center mt-3">
+                Our menu features premium baked meats, signature recipes, and freshly prepared sides made with quality ingredients. As the best restaurant in Islamabad F6, The Carnivore is known for serving tender meat dishes, generous portions, and exceptional flavors. Whether you’re planning a family dinner, business lunch, or special celebration in Islamabad, every meal is crafted to deliver quality, consistency, and a memorable dining experience.
+            </p>
+
+            <h1 class="font-['caviar_dreamsbold'] font-[700] text-[26px] sm:text-[34px] lg:text-[41px] text-[#c9ab81] leading-tight uppercase tracking-[4px] sm:tracking-[7px] lg:tracking-[9.43px] text-center mt-8 sm:mt-[50px]">
+                BEST RESTAURANT IN ISLAMABAD F6
+            </h1>
+
+            <p class="font-['Josefin_Sans'] text-[15px] sm:text-[17px] lg:text-[19px] font-normal leading-relaxed lg:leading-[29px] text-white text-center mt-6 sm:mt-12">
+                The Carnivore is a preferred destination for premium meat lovers in Islamabad F6, serving carefully prepared signature dishes in a refined setting. With quality ingredients, generous portions, and attentive service, it offers a dining experience ideal for family meals, celebrations, and business gatherings.
+            </p>
+        </div>
+    </div>
+
+    <!-- TESTIMONIAL & PHOTO CONTAINER -->
+    <div class="w-full h-auto lg:h-[640px] bg-[#0B1315] flex items-center justify-center py-6 lg:py-0">
+        <div class="w-full h-auto lg:h-[550px] border border-gray-800 flex flex-col md:flex-row items-center">
+            <!-- Testimonial Slider Container -->
+            <div class="w-full md:w-1/2 h-[450px] lg:h-[550px] bg-[#0e1a1d] flex flex-col items-center justify-center relative overflow-hidden text-center px-6 sm:px-12 lg:px-16">
+                <div class="text-[#c9ab81] text-6xl mb-4 sm:mb-8 opacity-70">
+                    <img class="w-[30px] sm:w-[40px]" src="photo/imageye___-_imgi_105_quote-mark.png" alt="">
+                </div>
+
+                <div id="slider" class="relative w-full h-[220px]">
+                    <div class="testimonial-item transition-all duration-1000 opacity-100 absolute inset-0 flex items-center justify-center">
+                        <p class="font-['Dancing_Script'] text-white text-xl sm:text-2xl lg:text-3xl leading-relaxed tracking-wide">
+                            My favorite dish was the lamb ribs. I often try lamb ribs wherever I go, but the flavor and tenderness I experienced at The Carnivore were truly exceptional.
+                        </p>
+                    </div>
+                    <div class="testimonial-item transition-all duration-1000 opacity-0 absolute inset-0 flex items-center justify-center">
+                        <p class="font-['Dancing_Script'] text-white text-xl sm:text-2xl lg:text-3xl leading-relaxed tracking-wide">
+                            The meat was perfectly cooked and incredibly satisfying. I am already looking forward to visiting again to enjoy it once more.
+                        </p>
+                    </div>
+                    <div class="testimonial-item transition-all duration-1000 opacity-0 absolute inset-0 flex items-center justify-center">
+                        <p class="font-['Dancing_Script'] text-white text-xl sm:text-2xl lg:text-3xl leading-relaxed tracking-wide">
+                            An absolute masterpiece of flavors! The atmosphere and service complement the extraordinary food quality perfectly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-8 sm:bottom-12 flex gap-8 sm:gap-12 text-[#c9ab81] font-serif text-lg">
+                    <div class="page-num flex flex-col items-center cursor-pointer opacity-100" data-index="0">
+                        <span>1</span>
+                        <div class="indicator h-[4px] w-6 border-t-2 border-b-2 border-[#c9ab81] mt-1 hidden"></div>
+                    </div>
+                    <div class="page-num flex flex-col items-center cursor-pointer opacity-50" data-index="1">
+                        <span>2</span>
+                        <div class="indicator h-[4px] w-6 border-t-2 border-b-2 border-[#c9ab81] mt-1 hidden"></div>
+                    </div>
+                    <div class="page-num flex flex-col items-center cursor-pointer opacity-50" data-index="2">
+                        <span>3</span>
+                        <div class="indicator h-[4px] w-6 border-t-2 border-b-2 border-[#c9ab81] mt-1 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Container -->
+            <div class="w-full md:w-1/2 h-[300px] sm:h-[400px] lg:h-[550px] relative overflow-hidden group">
+                <img class="w-full h-full object-cover" src="photo/imageye___-_imgi_11_hOME-testimonial (1).webp" alt="">
+                <span class="absolute top-0 left-1/2 w-0 h-full -translate-x-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:w-[150%] transition-all duration-1000 ease-in-out pointer-events-none mix-blend-screen"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAMILY PHOTO & BLOGS CONTAINER -->
+    <div class="w-full h-auto border border-gray-800 flex flex-col items-center bg-[#0B1315] py-8">
+        <div class="w-[90%] lg:w-[88%] h-auto border border-gray-800 flex flex-col md:flex-row justify-between gap-6 p-2">
+            <img class="w-full md:w-[48%] h-[200px] sm:h-[280px] object-cover" src="photo/imageye___-_imgi_58_Family-Restaurant-Near-Why-The-Carnivore-Should-Be-Your-First-Choice.webp" alt="">
+            <img class="w-full md:w-[48%] h-[200px] sm:h-[280px] object-cover" src="photo/imageye___-_imgi_61_Best-Family-Friendly-Restaurant-for-Meat-Lovers-in-Pakistan.webp" alt="">
+        </div>
+
+        <div class="w-[90%] lg:w-[88%] h-auto mt-6 flex flex-col md:flex-row justify-between gap-8 mx-auto">
+            <!-- Card 1 -->
+            <div class="w-full md:w-[48%] flex flex-col justify-between font-['Josefin_Sans']">
+                <div>
+                    <h2 class="text-[#c9ab81] text-[17px] sm:text-[19px] font-semibold uppercase tracking-[2px] leading-tight">
+                        Family Restaurant Near Me: Why The Carnivore Should Be Your First Choice
+                    </h2>
+                    <p class="text-gray-400 text-[12px] mt-2 font-light italic opacity-80">August 4, 2026</p>
+                    <p class="text-white text-[14px] leading-6 font-light mt-3 sm:mt-4 opacity-90 line-clamp-4">
+                        Why The Carnivore Is the Perfect Family Restaurant The Carnivore offers a unique dining experience centered around slow-baked meats. From expertly prepared baked meat to a welcoming ambiance, every detail is designed to create a memorable family dining experience. The welcoming atmosphere and warmth of the care put into your visit make families happy. Special attention is given to quality.
+                    </p>
+                </div>
+                <a href="#" class="text-[#c9ab81] text-[16px] sm:text-[18px] font-medium hover:text-white transition-colors mt-3">Read More »</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="w-full md:w-[48%] flex flex-col justify-between font-['Josefin_Sans']">
+                <div>
+                    <h2 class="text-[#c9ab81] text-[17px] sm:text-[19px] font-semibold uppercase tracking-[2px] leading-tight">
+                        Best Family-Friendly Restaurant For Meat Lovers In Pakistan
+                    </h2>
+                    <p class="text-gray-400 text-[12px] mt-2 font-light italic opacity-80">July 21, 2026</p>
+                    <p class="text-white text-[14px] leading-6 font-light mt-3 sm:mt-4 opacity-90 line-clamp-4">
+                        Why The Carnivore Is a Favorite Among Meat-Loving Families The Carnivore has built a reputation as a premier family restaurant where their main course consists of top-quality meat, and their dining is a delight. The restaurant, built around the concept of baked meat, is full-flavoured while providing an atmosphere that is ideal with customers of all ages. With expertly prepared.
+                    </p>
+                </div>
+                <a href="#" class="text-[#c9ab81] text-[16px] sm:text-[18px] font-medium hover:text-white transition-colors mt-3">Read More »</a>
+            </div>
+        </div>
+
+        <div class="w-full h-[120px] sm:h-[150px] flex justify-center items-center mt-4">
+            <button class="group relative w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] border border-[#c9ab81] bg-transparent font-['Open_Sans_Condensed'] text-[13px] sm:text-[14px] font-light text-[#c9ab81] tracking-[3px] uppercase overflow-hidden transition-all duration-500">
+                <span class="absolute top-[20px] left-[-5px] w-0 h-[1px] bg-[#c9ab81] -rotate-[30deg] origin-left transition-all duration-500 ease-in-out group-hover:w-[70px]"></span>
+                <span class="absolute bottom-[20px] right-[-5px] w-0 h-[1px] bg-[#c9ab81] -rotate-[30deg] origin-right transition-all duration-500 ease-in-out group-hover:w-[70px]"></span>
+                <span class="relative z-10 group-hover:text-white transition-colors duration-300">MORE BLOGS</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- TRIPADVISOR SECTION -->
+    <div class="w-full h-auto lg:h-[350px] flex justify-center items-center bg-[#0F1D22] py-8 lg:py-0">
+        <div class="w-[90%] h-auto lg:h-[320px] mx-auto flex flex-col lg:flex-row items-center font-sans overflow-hidden gap-6 lg:gap-0">
+            <!-- Left Info -->
+            <div class="w-full lg:w-[25%] h-auto lg:h-[250px] flex flex-col justify-center items-center lg:items-start pl-0 lg:pl-4 text-white text-center lg:text-left">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="w-16 h-16 rounded-md flex items-center justify-center">
+                        <img src="photo/2.webp" alt="">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg leading-tight">The Carnivore</h3>
+                        <div class="flex gap-1 mt-1 justify-center lg:justify-start">
+                            <img class="w-[20px]" src="photo/f.svg" alt="">
+                            <img class="w-[20px]" src="photo/f.svg" alt="">
+                            <img class="w-[20px]" src="photo/f.svg" alt="">
+                            <img class="w-[20px]" src="photo/f.svg" alt="">
+                        </div>
+                        <p class="text-[12px] text-gray-300 mt-1">178 Tripadvisor reviews</p>
+                    </div>
+                </div>
+                <button class="px-6 py-2 border border-white rounded-md text-sm font-semibold hover:bg-white hover:text-black transition-all">Write a review</button>
+            </div>
+
+            <!-- Right Slider -->
+            <div class="w-full lg:w-[75%] h-[260px] relative group flex items-center overflow-hidden">
+                <button id="prevBtn1" class="absolute left-0 z-20 text-white text-2xl p-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-chevron-left"></i></button>
+                <button id="nextBtn1" class="absolute right-0 z-20 text-white text-2xl p-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-chevron-right"></i></button>
+
+                <div id="sliderWrapper1" class="flex gap-4 transition-transform duration-700 ease-in-out w-max pl-2 sm:pl-4">
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-5 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <img src="photo/imageye___-_imgi_108_default-avatar-2020-42.jpg" class="w-10 h-10 rounded-full" alt="">
+                                <div><h4 class="font-bold text-sm">Ali H</h4><p class="text-[10px] text-gray-400">7 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-tripadvisor text-[#00af87] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2">
+                            <div class="flex gap-[2px]">
+                                <img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt="">
+                            </div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-xs mt-3 leading-relaxed opacity-90 italic">"Good environment Carnivore is the best restaurant The environment is so nice I orderd beef..."</p>
+                        <span class="text-gray-500 text-[14px] font-semibold mt-2">Read more</span>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-5 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <img src="photo/imageye___-_imgi_111_default-avatar-2020-2.jpg" class="w-10 h-10 rounded-full" alt="">
+                                <div><h4 class="font-bold text-sm">Raza M</h4><p class="text-[10px] text-gray-400">7 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-tripadvisor text-[#00af87] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2">
+                            <div class="flex gap-[2px]">
+                                <img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt="">
+                            </div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-xs mt-3 leading-relaxed opacity-90 italic">"Best Experience It was a wonderful experience at carnivore. The dinning was pretty amazing..."</p>
+                        <span class="text-gray-500 text-[14px] font-semibold mt-2">Read more</span>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-5 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <img src="photo/imageye___-_imgi_112_default-avatar-2020-53.jpg" class="w-10 h-10 rounded-full" alt="">
+                                <div><h4 class="font-bold text-sm">Bilal A</h4><p class="text-[10px] text-gray-400">7 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-tripadvisor text-[#00af87] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2">
+                            <div class="flex gap-[2px]">
+                                <img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt="">
+                            </div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-xs mt-3 leading-relaxed opacity-90 italic">"Excellent quality meat Excellent food, love their food. I'm a regular customer, and always love..."</p>
+                        <span class="text-gray-500 text-[14px] font-semibold mt-2">Read more</span>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-5 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer shadow-lg border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <img src="photo/imageye___-_imgi_114_default-avatar-2020-67.jpg" class="w-10 h-10 rounded-full" alt="">
+                                <div><h4 class="font-bold text-sm">Sarah K</h4><p class="text-[10px] text-gray-400">1 month ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-tripadvisor text-[#00af87] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2">
+                            <div class="flex gap-[2px]">
+                                <img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt=""><img class="w-[18px]" src="photo/f.svg" alt="">
+                            </div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-xs mt-3 leading-relaxed opacity-90 italic">"The ribs were melt-in-mouth. Definitely coming back for more meat!"</p>
+                        <span class="text-gray-500 text-[14px] font-semibold mt-2">Read more</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOGLE REVIEWS SECTION -->
+    <div class="w-full h-auto lg:h-[350px] flex justify-center bg-[#0F1D22] items-center py-8 lg:py-0">
+        <div class="w-[90%] h-auto lg:h-[320px] mx-auto flex flex-col lg:flex-row items-center font-['Josefin_Sans'] overflow-hidden gap-6 lg:gap-0">
+            <!-- Left Info -->
+            <div class="w-full lg:w-[25%] h-auto lg:h-[250px] flex flex-col justify-center items-center lg:items-start pl-0 lg:pl-4 text-white text-center lg:text-left">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="w-16 h-16 bg-black border border-gray-700 rounded-md flex items-center justify-center overflow-hidden">
+                        <img src="photo/imageye___-_imgi_98_photo (1).jpg" class="w-full h-full object-cover" alt="Logo">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg leading-tight">The Carnivore</h3>
+                        <div class="flex items-center gap-1 mt-1 justify-center lg:justify-start">
+                            <div class="flex text-[#fbbc05] text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                        <p class="text-[12px] text-gray-300 mt-1 font-light tracking-wide">6,108 Google reviews</p>
+                    </div>
+                </div>
+                <button class="px-8 py-2 border border-white rounded-md text-sm font-semibold hover:bg-white hover:text-black transition-all duration-300 mt-2">Write a review</button>
+            </div>
+
+            <!-- Right Slider -->
+            <div class="w-full lg:w-[75%] h-[260px] relative group flex items-center overflow-hidden">
+                <button id="prevBtn2" class="absolute left-2 z-20 text-white text-xl p-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 rounded-full"><i class="fa-solid fa-chevron-left"></i></button>
+                <button id="nextBtn2" class="absolute right-2 z-20 text-white text-xl p-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 rounded-full"><i class="fa-solid fa-chevron-right"></i></button>
+
+                <div id="sliderWrapper2" class="flex gap-4 transition-transform duration-700 ease-in-out w-max pl-2 sm:pl-4">
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-6 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-[#0066cc] rounded-full flex items-center justify-center text-lg sm:text-xl font-bold">F</div>
+                                <div><h4 class="font-bold text-[14px] sm:text-[15px]">Farman Ali</h4><p class="text-[10px] sm:text-[11px] text-gray-400">3 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-google text-[#4285F4] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-3">
+                            <div class="flex text-[#fbbc05] text-[13px] gap-[2px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-[14px] mt-4 font-light opacity-90">Very nice 👍</p>
+                        <div class="mt-auto"></div>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-6 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-[#388e3c] rounded-full flex items-center justify-center text-lg sm:text-xl font-bold">m</div>
+                                <div><h4 class="font-bold text-[14px] sm:text-[15px]">moiz Ahmed</h4><p class="text-[10px] sm:text-[11px] text-gray-400">3 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-google text-[#EA4335] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-3">
+                            <div class="flex text-[#fbbc05] text-[13px] gap-[2px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-[14px] mt-4 font-light opacity-90 line-clamp-3">Amazing food! Best service...</p>
+                        <span class="text-gray-500 text-[14px] font-semibold">Read more</span>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-6 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Asim+Nisar" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full">
+                                <div><h4 class="font-bold text-[14px] sm:text-[15px]">Asim Nisar</h4><p class="text-[10px] sm:text-[11px] text-gray-400">3 months ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-google text-[#fbbc05] text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-1 mt-3">
+                            <div class="flex text-[#fbbc05] text-[13px] gap-[2px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i>
+                        </div>
+                        <p class="text-[14px] mt-4 font-light opacity-90">Amazing experience and food quality</p>
+                        <div class="mt-auto"></div>
+                    </div>
+
+                    <div class="review-card w-[250px] sm:w-[265px] h-[230px] bg-[#1a1a1a] rounded-xl p-6 text-white flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 lg:hover:-translate-y-4 cursor-pointer border border-gray-800">
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-3">
+                                <div class="w-10 sm:w-12 h-10 sm:h-12 bg-purple-600 rounded-full flex items-center justify-center text-lg sm:text-xl font-bold">K</div>
+                                <div><h4 class="font-bold text-[14px] sm:text-[15px]">Khurram</h4><p class="text-[10px] sm:text-[11px] text-gray-400">1 month ago</p></div>
+                            </div>
+                            <i class="fa-brands fa-google text-[#34A853] text-xl"></i>
+                        </div>
+                        <div class="flex items-center mt-3"><div class="flex text-[#fbbc05] text-[13px] gap-[2px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><i class="fa-solid fa-circle-check text-blue-500 text-[12px] ml-1"></i></div>
+                        <p class="text-[14px] mt-4 font-light opacity-90">Best baked meat in Islamabad!</p>
+                        <div class="mt-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ HEADING -->
+    <div class="w-full h-auto lg:h-[120px] flex justify-center items-center py-6 lg:py-0">
+        <div class="w-[90%] lg:w-[50%] h-auto">
+            <p class="font-['Miniver'] text-[19px] font-normal leading-[28px] text-[#C9AB81] text-center">frequently asked questions</p>
+            <div class="w-[80%] sm:w-[50%] lg:w-[40%] mx-auto flex justify-between items-center mt-2 sm:mt-3">
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+                <p class="font-['caviar_dreamsbold'] text-[32px] sm:text-[41px] font-bold leading-tight text-[#C9AB81]">FAQs</p>
+                <img class="w-[30px] sm:w-[50px]" src="photo/download (1).svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ ACCORDION -->
+    <div class="w-full h-auto lg:h-[500px] border border-gray-800 flex justify-center items-center py-6 lg:py-0">
+        <div class="w-[90%] h-auto max-h-[490px] mx-auto overflow-y-auto pr-2 custom-scrollbar">
+            <div class="flex flex-col gap-3">
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            IS THE CARNIVORE SUITABLE FOR LARGE GROUPS OR EVENTS?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            Yes, We welcome groups and private events. For bookings of 8 or more people, we recommend calling us in advance to ensure the best arrangement.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            WHERE ARE THE CARNIVORE BRANCHES LOCATED?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            We have multiple locations for your convenience in Islamabad (F-6), Lahore (Gulberg III), Karachi (DHA Phase VI), and now Riyadh, Saudi Arabia.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            WHAT ARE YOUR OPENING HOURS?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            All our Pakistan branches are open from 12:00 PM to 12:00 AM daily. Our Riyadh branch opens at 1:00 PM.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            WHAT ARE THE SIGNATURE DISHES OF THE CARNIVORE?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            The signature dishes at The Carnivore feature slow-baked meats, prepared to deliver rich flavor, tenderness, and perfect texture in every bite.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            DO YOU HAVE A BRANCH OUTSIDE OF PAKISTAN?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            Yes! We are excited to have brought our baked meat revolution to Riyadh, Saudi Arabia, located on King Abdullah Branch Rd.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            DO YOU OFFER ANYTHING BESIDES BAKED MEAT?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            Our specialty is slow-baked premium cuts, but our full menu also includes perfectly baked chicken and a wide array of complementary salads and sauces.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-[#f4f1ea] border border-transparent transition-all duration-300">
+                    <button class="w-full flex items-center px-4 sm:px-6 py-4 text-left focus:outline-none accordion-header">
+                        <span class="text-black text-xl sm:text-2xl font-bold mr-3 sm:mr-4">+</span>
+                        <span class="text-[#c9ab81] font-['Josefin_Sans'] text-[13px] sm:text-[15px] font-bold tracking-[2px] sm:tracking-[4px] uppercase">
+                            HOW CAN I MAKE A RESERVATION?
+                        </span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-8 sm:px-16 pb-4 text-gray-600 font-light italic leading-relaxed text-[13px] sm:text-[15px]">
+                            You can easily reserve your table by calling us directly at our Phone Number or by booking online through our website's reservation section.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="w-full h-auto lg:h-[600px] mt-8 flex justify-center">
+        <div class="w-[90%] lg:w-[88%] h-auto lg:h-[500px] mt-5 mx-auto bg-[#0a1113] flex flex-col md:flex-row flex-wrap lg:flex-nowrap font-['Josefin_Sans']">
+
+            <!-- Column 1 -->
+            <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col items-center justify-center p-6 lg:px-10 text-center border-b md:border-b-0 md:border-r border-gray-800">
+                <div class="mb-6">
+                    <img src="photo/imageye___-_imgi_98_photo (1).jpg" class="w-36 sm:w-40 invert brightness-200" alt="Logo">
+                </div>
+                <p class="text-white text-[15px] sm:text-[17px] leading-relaxed sm:leading-7 font-light">
+                    The Carnivore was created to celebrate premium baked meats, refined dining, and warm hospitality, delivering consistent flavors and memorable experiences proudly as the best restaurant in Pakistan!
+                </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="w-full md:w-1/2 lg:w-[18%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-12 border-b md:border-b-0 lg:border-r border-gray-800">
+                <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Links</h3>
+                <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                <div class="flex flex-col gap-3 sm:gap-4 text-[#c9ab81]/80 text-[15px] sm:text-[16px] font-light italic">
+                    <a href="#" class="hover:text-white transition-colors">Home</a>
+                    <a href="#" class="hover:text-white transition-colors">About Carnivore</a>
+                    <a href="#" class="hover:text-white transition-colors">Our Menu</a>
+                    <a href="#" class="hover:text-white transition-colors">Offers & Discounts</a>
+                    <a href="#" class="hover:text-white transition-colors">Blog</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact Us</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10 border-b md:border-b-0 md:border-r border-gray-800">
+                <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Contact Us</h3>
+                <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                <div class="flex flex-col gap-4 sm:gap-6 text-[#c9ab81] text-[13px] sm:text-[14px]">
+                    <div>
+                        <h4 class="font-bold mb-1 sm:mb-2">Islamabad</h4>
+                        <p class="font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-1 sm:mb-2">Lahore</h4>
+                        <p class="font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-1 sm:mb-2">Karachi</h4>
+                        <p class="font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Riyadh</h4>
+                        <p class="font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="w-full md:w-1/2 lg:w-[26%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10">
+                <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Follow Instagram</h3>
+                <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                
+                <div class="grid grid-cols-3 gap-2 mb-6 sm:mb-8">
+                    <img src="https://picsum.photos/80/80?random=1" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    <img src="https://picsum.photos/80/80?random=2" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    <img src="https://picsum.photos/80/80?random=3" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    <img src="https://picsum.photos/80/80?random=4" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    <img src="https://picsum.photos/80/80?random=5" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    <img src="https://picsum.photos/80/80?random=6" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                </div>
+
+                <div class="flex flex-wrap gap-2 sm:gap-3">
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-facebook-f text-xs sm:text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-instagram text-xs sm:text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-youtube text-xs sm:text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-snapchat text-xs sm:text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-x-twitter text-xs sm:text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                        <i class="fa-brands fa-tiktok text-xs sm:text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAST FOOTER -->
+    <div class="w-full h-auto min-h-[80px] flex justify-center py-4 sm:py-0">
+        <div class="w-[90%] lg:w-[50%] h-auto min-h-[80px] mx-auto flex justify-center items-center bg-[#0a1113] border-t border-gray-800 text-center px-4">
+            <p class="font-['Josefin_Sans'] text-[14px] sm:text-[18px] font-light tracking-[1px] text-white">
+                Copyright © 2026 All Rights Reserved - - 
+                <span class="text-[#c9ab81] ml-1 block sm:inline mt-1 sm:mt-0">Bright Ideas Communications</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Drawer Menu Controls
+        const menuIcon = document.getElementById('menuIcon');
+        const closeMenu = document.getElementById('closeMenu');
+        const locationMenu = document.getElementById('locationMenu');
+
+        menuIcon.addEventListener('click', () => {
+            locationMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        closeMenu.addEventListener('click', () => {
+            locationMenu.classList.add('translate-x-full');
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // 2. Mobile Responsive Nav Menu Toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('-translate-y-full');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const hideMobileMenu = () => {
+            mobileNavMenu.classList.add('-translate-y-full');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeMobileNav.addEventListener('click', hideMobileMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', hideMobileMenu));
+
+        // 3. Testimonials Slider
+        const slides = document.querySelectorAll('.testimonial-item');
+        const pageNums = document.querySelectorAll('.page-num');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentIndex = 0;
+
+        function updateSlider(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = '0';
+                slide.style.zIndex = '0';
+                pageNums[i].style.opacity = '0.5';
+                indicators[i].classList.add('hidden');
+            });
+            slides[index].style.opacity = '1';
+            slides[index].style.zIndex = '10';
+            pageNums[index].style.opacity = '1';
+            indicators[index].classList.remove('hidden');
+        }
+
+        function autoPlay() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider(currentIndex);
+        }
+
+        updateSlider(0);
+        setInterval(autoPlay, 4000);
+
+        pageNums.forEach((num, index) => {
+            num.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider(index);
+            });
+        });
+
+        // 4. Tripadvisor Review Slider
+        const wrapper1 = document.getElementById('sliderWrapper1');
+        const nextBtn1 = document.getElementById('nextBtn1');
+        const prevBtn1 = document.getElementById('prevBtn1');
+        let scroll1 = 0;
+
+        function setupSlider(wrapper, nextBtn, prevBtn) {
+            if (!wrapper) return;
+            const card = wrapper.querySelector('.review-card');
+            if(!card) return;
+            
+            const cardStep = card.offsetWidth + 16;
+            const totalCards = wrapper.querySelectorAll('.review-card').length;
+            
+            let currentScroll = 0;
+
+            const move = (direction = 'next') => {
+                const containerWidth = wrapper.parentElement.offsetWidth;
+                const maxScroll = (totalCards * cardStep) - containerWidth;
+                
+                if (direction === 'next') {
+                    if (currentScroll >= maxScroll && maxScroll > 0) {
+                        currentScroll = 0;
+                    } else {
+                        currentScroll += cardStep;
+                    }
+                } else {
+                    if (currentScroll > 0) {
+                        currentScroll -= cardStep;
+                    }
+                }
+                wrapper.style.transform = `translateX(-${currentScroll}px)`;
+            };
+
+            let interval = setInterval(() => move('next'), 3500);
+
+            wrapper.addEventListener('mouseenter', () => clearInterval(interval));
+            wrapper.addEventListener('mouseleave', () => interval = setInterval(() => move('next'), 3500));
+
+            if(nextBtn) nextBtn.addEventListener('click', () => move('next'));
+            if(prevBtn) prevBtn.addEventListener('click', () => move('prev'));
+        }
+
+        setupSlider(wrapper1, nextBtn1, prevBtn1);
+
+        // 5. Google Review Slider
+        const wrapper2 = document.getElementById('sliderWrapper2');
+        const nextBtn2 = document.getElementById('nextBtn2');
+        const prevBtn2 = document.getElementById('prevBtn2');
+
+        setupSlider(wrapper2, nextBtn2, prevBtn2);
+
+        // 6. FAQ Accordion Logic
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('span:first-child');
+                const parent = header.parentElement;
+
+                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                    content.style.maxHeight = '0px';
+                    icon.innerText = '+';
+                    parent.classList.remove('shadow-lg');
+                } else {
+                    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = '0px');
+                    document.querySelectorAll('.accordion-header span:first-child').forEach(i => i.innerText = '+');
+
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.innerText = '−';
+                    parent.classList.add('shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

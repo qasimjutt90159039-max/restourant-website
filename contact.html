@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - The Carnivore</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-[#0B1315] overflow-x-hidden">
+
+    <!-- NAVBAR (Fixed Top) -->
+    <div class="fixed top-0 left-0 z-50 w-full h-[95px] bg-[#000000] flex justify-between lg:justify-around items-center px-4 lg:px-0 border-b border-[#c9ab81]">
+        <!-- logo -->
+        <div class="w-auto lg:w-[20%] h-[93px] flex justify-center items-center">
+            <img class="w-[120px] md:w-[150px] h-[80px] md:h-[92px] object-contain" src="photo/imageye___-_imgi_98_photo (1).jpg" alt="Logo">
+        </div>
+        
+        <!-- desktop links -->
+        <div class="hidden lg:flex w-[45%] h-[93px] justify-evenly items-center">
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="index.html">Home</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="our-mrnu.html">Our Menu</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="about-sectiom.html">About Carnivore</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="gallary.html">Gallary</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="blog.html">Blog</a>
+            <a class="font-josefin text-sm font-light leading-5 text-[#c9ab81] hover:text-white" href="contact.html">Contact</a>
+        </div>
+
+        <!-- right buttons & toggles -->
+        <div class="w-auto lg:w-[25%] h-[93px] flex justify-end lg:justify-evenly items-center gap-3 lg:gap-0">
+            <button class="w-[130px] sm:w-[160px] h-[38px] sm:h-[42px] border bg-white font-josefin text-[13px] sm:text-[15px] font-light text-[#585858] rounded-[8px] relative overflow-hidden group">
+                <span class="absolute inset-y-0 left-0 w-0 bg-[#C9AB81] transition-all duration-500 ease-in-out group-hover:w-full"></span>
+                <span class="relative z-10 transition-colors duration-500 group-hover:text-white">Book Your Table</span>
+            </button>
+            
+            <!-- Menu Icon (Location Drawer) -->
+            <i id="menuIcon" class="fa-solid fa-bars-staggered text-[#C9AB81] text-[24px] sm:text-[30px] lg:mr-[30px] cursor-pointer"></i>
+
+            <!-- Mobile Nav Toggle -->
+            <button id="mobileNavToggle" class="lg:hidden text-[#C9AB81] text-[24px] focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION MENU OVERLAY -->
+    <div id="mobileNavMenu" class="fixed inset-0 bg-[#000000]/95 z-[90] flex flex-col justify-center items-center gap-6 text-center transform -translate-y-full transition-transform duration-300 ease-in-out lg:hidden">
+        <button id="closeMobileNav" class="absolute top-8 right-8 text-[#c9ab81] text-3xl focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="index.html">Home</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="our-mrnu.html">Our Menu</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="about-sectiom.html">About Carnivore</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="gallary.html">Gallary</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="blog.html">Blog</a>
+        <a class="font-josefin text-xl font-light text-[#c9ab81] hover:text-white mobile-link" href="contact.html">Contact</a>
+    </div>
+
+    <!-- LOCATION OVERLAY MENU -->
+    <div id="locationMenu" class="fixed top-0 right-0 w-full sm:w-3/4 md:w-1/2 h-full bg-[#0e1a1d] z-[100] translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto border-l border-[#c9ab81]">
+        <div class="absolute top-8 right-8 text-white text-3xl cursor-pointer hover:text-[#c9ab81]" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <div class="flex flex-col items-center py-16 px-6 sm:px-10 text-center font-josefin">
+            <div class="mb-12">
+                <h1 class="text-white text-2xl sm:text-3xl font-bold tracking-[0.2em] leading-tight">THE CARNIVORE</h1>
+                <p class="text-white text-[9px] tracking-[0.4em] mt-1">BAKED MEAT RESTAURANT</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">ISLAMABAD</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">LAHORE</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">KARACHI</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+            </div>
+
+            <div class="mb-10">
+                <h2 class="text-[#c9ab81] text-xl tracking-[0.2em] mb-3 uppercase">RIYADH</h2>
+                <p class="text-[#c9ab81] text-md font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO IMG CONTAINER -->
+    <div class="w-full h-[250px] sm:h-[400px] lg:h-[600px] border border-gray-800 mt-[95px] overflow-hidden">
+        <img class="w-full h-full object-cover sticky top-0" src="blog-photo/imageye___-_imgi_3_Contact.jpg" alt="Contact Hero">
+    </div>
+
+    <!-- BODY SECTION -->
+    <div class="w-full h-auto border-b border-gray-800 flex flex-col items-center bg-[#0B1315] py-6 lg:py-10">
+
+        <div class="w-[90%] h-auto">
+
+            <!-- Breadcrumb -->
+            <div class="w-full sm:w-[500px] h-[50px] flex items-center gap-2">
+                <p class="font-['Josefin_Sans'] text-[16px] sm:text-[19px] font-light leading-[29px] text-[#c9ab81]">Home</p>
+                <i class="fa-solid fa-angle-right text-[15px] sm:text-[17px] text-white"></i>
+                <p class="font-['Josefin_Sans'] text-[16px] sm:text-[19px] font-light leading-[29px] text-white">Our Menu</p>
+            </div>
+
+            <!-- HEADER CARD -->
+            <div class="w-full h-auto min-h-[220px] sm:h-[250px] flex justify-center items-center my-4 sm:my-6">
+                <div class="w-full sm:w-[85%] lg:w-[85%] h-auto min-h-[220px] flex justify-center items-center">
+                    <div class="w-full md:w-[80%] lg:w-[60%] h-auto min-h-[220px] flex flex-col justify-center items-center">
+                        <div class="w-full h-auto min-h-[80px] sm:h-[150px] flex items-center justify-center gap-2 sm:gap-4">
+                            <img class="w-[35px] sm:w-[60px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                            <p class="font-['caviar_dreamsbold'] text-[28px] sm:text-[36px] lg:text-[41px] font-bold leading-tight text-[#c9ab81] text-center uppercase">
+                                CONTACT US
+                            </p>
+                            <img class="w-[35px] sm:w-[60px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                        </div>
+
+                        <p class="font-['Josefin_Sans'] text-[15px] sm:text-[17px] lg:text-[19px] font-light leading-relaxed sm:leading-[29px] text-white text-center">
+                            At The Carnivore, our story is built on a passion for premium baked meats, refined dining, and creating memorable experiences through quality ingredients, warm hospitality, and consistent flavors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INPUT FORM CONTAINER -->
+            <div class="w-full h-auto flex justify-center items-center py-4">
+                <div class="w-full h-auto">
+                    <!-- name -->
+                    <p class="font-['Josefin_Sans'] text-[17px] sm:text-[19px] font-semibold leading-[29px] text-white">Your name</p>
+                    <input class="w-full h-[54px] border border-[#7b6843] mt-2 bg-transparent text-white px-4 focus:outline-none focus:border-[#c5a367]" type="text">
+
+                    <!-- phone -->
+                    <p class="font-['Josefin_Sans'] text-[17px] sm:text-[19px] font-semibold leading-[29px] text-white mt-6 sm:mt-8">Your phone</p>
+                    <input class="w-full h-[54px] border border-[#7b6843] mt-2 bg-transparent text-white px-4 focus:outline-none focus:border-[#c5a367]" type="text">
+
+                    <!-- person -->
+                    <p class="font-['Josefin_Sans'] text-[17px] sm:text-[19px] font-semibold leading-[29px] text-white mt-6 sm:mt-8">Select person</p>
+                    <select class="w-full h-[54px] border border-[#7b6843] mt-2 bg-transparent text-white px-4 focus:outline-none focus:border-[#c5a367]">
+                        <option value="" class="bg-[#261a36] text-white">Select Person</option>
+                        <option value="1" class="bg-[#261a36] text-white">Person 1</option>
+                        <option value="2" class="bg-[#261a36] text-white">Person 2</option>
+                        <option value="3" class="bg-[#261a36] text-white">Person 3</option>
+                        <option value="4" class="bg-[#261a36] text-white">Person 4</option>
+                    </select>
+
+                    <!-- date -->
+                    <p class="font-['Josefin_Sans'] text-[17px] sm:text-[19px] font-semibold leading-[29px] text-white mt-6 sm:mt-8">Select Date</p>
+                    <input class="w-full h-[54px] border border-[#7b6843] mt-2 bg-transparent px-4 text-white focus:outline-none focus:border-[#c5a367]" type="date">
+
+                    <!-- message -->
+                    <p class="font-['Josefin_Sans'] text-[17px] sm:text-[19px] font-semibold leading-[29px] text-white mt-6 sm:mt-8">Your message (optional)</p>
+                    <textarea class="w-full h-[150px] sm:h-[200px] border border-[#7b6843] bg-transparent mt-3 p-4 text-white focus:outline-none focus:border-[#c5a367]"></textarea>
+
+                    <!-- button -->
+                    <div class="w-full h-[90px] sm:h-[100px] flex items-center mt-2">
+                        <button class="group relative w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] border border-[#c9ab81] bg-transparent font-['Open_Sans_Condensed'] text-[14px] font-light text-[#c9ab81] tracking-[3px] uppercase overflow-hidden transition-all duration-500">
+                            <span class="absolute top-[20px] left-[-5px] w-0 h-[1px] bg-[#c9ab81] -rotate-[30deg] origin-left transition-all duration-500 ease-in-out group-hover:w-[70px]"></span>
+                            <span class="absolute bottom-[20px] right-[-5px] w-0 h-[1px] bg-[#c9ab81] -rotate-[30deg] origin-right transition-all duration-500 ease-in-out group-hover:w-[70px]"></span>
+                            <span class="relative z-10 group-hover:text-white transition-colors duration-300">BOOK NOW</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAPS & LOCATION CONTAINER -->
+            <div class="w-full h-auto flex justify-center mt-8">
+                <div class="w-full lg:w-[90%] h-auto">
+
+                    <!-- ADDRESS BLOCK 1 (ISLAMABAD & LAHORE) -->
+                    <div class="w-full h-auto min-h-[260px] flex flex-col md:flex-row items-center justify-center font-['Montserrat'] py-6 gap-6 md:gap-0">
+                        <!-- Left: ISLAMABAD -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center text-center px-4 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0">
+                            <span class="font-['Great_Vibes'] text-[#c5a367] text-[20px] sm:text-[22px] mb-1">Book Your Table At</span>
+                            <div class="flex items-center gap-2 sm:gap-4 mb-4">
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                                <h2 class="text-[#c5a367] text-[28px] sm:text-[38px] lg:text-[45px] font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase leading-none">Islamabad</h2>
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                            </div>
+                            <div class="text-white/90 text-[13px] sm:text-[14px] leading-[1.6] font-light">
+                                <p>Block - 07, Roomy Hotel, Super Market, F-6 Markaz, <br class="hidden sm:block"> Islamabad.</p>
+                                <p class="mt-2">Contact Us: 051 8772555 , 0300 5326559</p>
+                                <p class="text-white/80">info@carnivore.com.pk</p>
+                            </div>
+                        </div>
+
+                        <!-- Right: LAHORE -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center text-center px-4 pt-2 md:pt-0">
+                            <span class="font-['Great_Vibes'] text-[#c5a367] text-[20px] sm:text-[22px] mb-1">Book Your Table At</span>
+                            <div class="flex items-center gap-2 sm:gap-4 mb-4">
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                                <p class="text-[#c5a367] text-[28px] sm:text-[38px] lg:text-[45px] font-semibold uppercase leading-none">Lahore</p>
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                            </div>
+                            <div class="text-white/90 text-[13px] sm:text-[14px] leading-[1.6] font-light">
+                                <p>Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg <br class="hidden sm:block"> III, Lahore.</p>
+                                <p class="mt-2">Contact Us: 042 35875555 , 0336 8835555</p>
+                                <p class="text-white/80">info@carnivore.com.pk</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MAPS ROW 1 -->
+                    <div class="w-full h-auto min-h-[310px] flex flex-col md:flex-row justify-between gap-6 my-4">
+                        <div class="w-full md:w-[48%] h-[280px] sm:h-[310px]">
+                            <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.2326105143215!2d73.075077!3d33.7288007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf448ddd3747%3A0x174f73aa9c9943a1!2sThe%20Carnivore!5e0!3m2!1sen!2s!4v1786530639982!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                        <div class="w-full md:w-[48%] h-[280px] sm:h-[310px]">
+                            <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.626731792646!2d74.35348309999999!3d31.5069423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190589d41692bb%3A0xd8e0260f4c2e20e0!2sThe%20Carnivore%20Lahore!5e0!3m2!1sen!2s!4v1786530725177!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- ADDRESS BLOCK 2 (KARACHI & RIYADH) -->
+                    <div class="w-full h-auto min-h-[260px] flex flex-col md:flex-row items-center justify-center font-['Montserrat'] py-6 gap-6 md:gap-0">
+                        <!-- Left: KARACHI -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center text-center px-4 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0">
+                            <span class="font-['Great_Vibes'] text-[#c5a367] text-[20px] sm:text-[22px] mb-1">Book Your Table At</span>
+                            <div class="flex items-center gap-2 sm:gap-4 mb-4">
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                                <h2 class="text-[#c5a367] text-[28px] sm:text-[38px] lg:text-[45px] font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase leading-none">Karachi</h2>
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                            </div>
+                            <div class="text-white/90 text-[13px] sm:text-[14px] leading-[1.6] font-light">
+                                <p>46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi..</p>
+                                <p class="mt-2">Contact Us: 0332 3665555</p>
+                                <p class="text-white/80">info@carnivore.com.pk</p>
+                            </div>
+                        </div>
+
+                        <!-- Right: RIYADH -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center text-center px-4 pt-2 md:pt-0">
+                            <span class="font-['Great_Vibes'] text-[#c5a367] text-[20px] sm:text-[22px] mb-1">Book Your Table At</span>
+                            <div class="flex items-center gap-2 sm:gap-4 mb-4">
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                                <p class="text-[#c5a367] text-[28px] sm:text-[38px] lg:text-[45px] font-semibold uppercase leading-none">Riyadh</p>
+                                <img class="w-[28px] sm:w-[40px] rotate-180" src="photo/download (1).svg" alt="decoration">
+                            </div>
+                            <div class="text-white/90 text-[13px] sm:text-[14px] leading-[1.6] font-light">
+                                <p>King Abdullah Branch Rd, King Abdullah District, <br class="hidden sm:block"> Riyadh</p>
+                                <p class="mt-2">Contact Us: +966 59 990 9557</p>
+                                <p class="text-white/80">info@thecarnivorerestaurant.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MAPS ROW 2 -->
+                    <div class="w-full h-auto min-h-[310px] flex flex-col md:flex-row justify-between gap-6 my-4">
+                        <div class="w-full md:w-[48%] h-[280px] sm:h-[310px]">
+                            <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.0255740640955!2d67.0486464!3d24.7945778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d1db642d655%3A0xd539bad6067466b6!2sThe%20Carnivore%20Karachi!5e0!3m2!1sen!2s!4v1786531230717!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                        <div class="w-full md:w-[48%] h-[280px] sm:h-[310px]">
+                            <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.2823484066735!2d46.722037!3d24.7515066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03002dd34d3d%3A0x88dde731fb59cfa6!2sThe%20Carnivore%20Restaurant!5e0!3m2!1sen!2s!4v1786531273261!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bg-[#0d1112] w-full h-auto">
+        <div class="w-full h-auto lg:h-[600px] flex justify-center bg-[#0d1112]">
+            <div class="w-[90%] lg:w-[88%] h-auto lg:h-[500px] mt-8 mx-auto bg-[#0a1113] flex flex-col md:flex-row flex-wrap lg:flex-nowrap font-['Josefin_Sans']">
+
+                <!-- Column 1 -->
+                <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col items-center justify-center p-6 lg:px-10 text-center border-b md:border-b-0 md:border-r border-gray-800">
+                    <div class="mb-6">
+                        <img src="photo/imageye___-_imgi_98_photo (1).jpg" class="w-36 sm:w-40 invert brightness-200" alt="Logo">
+                    </div>
+                    <p class="text-white text-[15px] sm:text-[17px] leading-relaxed sm:leading-7 font-light">
+                        The Carnivore was created to celebrate premium baked meats, refined dining, and warm hospitality, delivering consistent flavors and memorable experiences proudly as the best restaurant in Pakistan!
+                    </p>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="w-full md:w-1/2 lg:w-[18%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-12 border-b md:border-b-0 lg:border-r border-gray-800">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Links</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    <div class="flex flex-col gap-3 sm:gap-4 text-[#c9ab81]/80 text-[15px] sm:text-[16px] font-light italic">
+                        <a href="#" class="hover:text-white transition-colors">Home</a>
+                        <a href="#" class="hover:text-white transition-colors">About Carnivore</a>
+                        <a href="#" class="hover:text-white transition-colors">Our Menu</a>
+                        <a href="#" class="hover:text-white transition-colors">Offers & Discounts</a>
+                        <a href="#" class="hover:text-white transition-colors">Blog</a>
+                        <a href="#" class="hover:text-white transition-colors">Contact Us</a>
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="w-full md:w-1/2 lg:w-[28%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10 border-b md:border-b-0 md:border-r border-gray-800">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Contact Us</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    <div class="flex flex-col gap-4 sm:gap-6 text-[#c9ab81] text-[13px] sm:text-[14px]">
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Islamabad</h4>
+                            <p class="font-light opacity-80">Block - 07, Roomy Hotel Super Market, Markaz F-6, Islamabad.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Lahore</h4>
+                            <p class="font-light opacity-80">Opposite Xinhua Mall, Mehmood Ali Kasuri Road, Gulberg III, Lahore.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 sm:mb-2">Karachi</h4>
+                            <p class="font-light opacity-80">46-C, Khayaban-e-Shahbaz, Phase VI, DHA Karachi.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Riyadh</h4>
+                            <p class="font-light opacity-80">King Abdullah Branch Rd, King Abdullah District, Riyadh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="w-full md:w-1/2 lg:w-[26%] h-auto lg:h-full flex flex-col p-6 lg:pt-16 lg:px-10">
+                    <h3 class="text-[#c9ab81] text-lg font-bold tracking-widest mb-1">Follow Instagram</h3>
+                    <div class="w-10 h-[1px] bg-[#c9ab81] mb-6 sm:mb-8"></div>
+                    
+                    <div class="grid grid-cols-3 gap-2 mb-6 sm:mb-8">
+                        <img src="https://picsum.photos/80/80?random=1" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=2" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=3" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=4" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=5" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                        <img src="https://picsum.photos/80/80?random=6" class="w-full h-16 sm:h-20 object-cover rounded-sm border border-gray-700" alt="">
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 sm:gap-3">
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-facebook-f text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-instagram text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-youtube text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-snapchat text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-x-twitter text-xs sm:text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 sm:w-10 h-8 sm:h-10 border border-[#c9ab81] rounded-full flex items-center justify-center text-[#c9ab81] hover:bg-[#c9ab81] hover:text-black transition-all">
+                            <i class="fa-brands fa-tiktok text-xs sm:text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LAST FOOTER COPYRIGHT -->
+        <div class="w-full h-auto min-h-[80px] flex justify-center py-4 sm:py-0">
+            <div class="w-[90%] lg:w-[50%] h-auto min-h-[80px] mx-auto flex justify-center items-center bg-[#0a1113] border-t border-gray-800 text-center px-4">
+                <p class="font-['Josefin_Sans'] text-[14px] sm:text-[18px] font-light tracking-[1px] text-white">
+                    Copyright © 2026 All Rights Reserved - - 
+                    <span class="text-[#c9ab81] ml-1 block sm:inline mt-1 sm:mt-0">Bright Ideas Communications</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Location Drawer Menu Controls
+        const menuIcon = document.getElementById('menuIcon');
+        const closeMenu = document.getElementById('closeMenu');
+        const locationMenu = document.getElementById('locationMenu');
+
+        menuIcon.addEventListener('click', () => {
+            locationMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        closeMenu.addEventListener('click', () => {
+            locationMenu.classList.add('translate-x-full');
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mobile Nav Menu Controls
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('-translate-y-full');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const hideMobileMenu = () => {
+            mobileNavMenu.classList.add('-translate-y-full');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeMobileNav.addEventListener('click', hideMobileMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', hideMobileMenu));
+    </script>
+</body>
+</html>
